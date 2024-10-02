@@ -33,4 +33,19 @@ public class MedicationController: ControllerBase
 
         return CreatedAtAction(nameof(Get), new { id = newMedication.Id }, newMedication);
     }
+
+    [HttpDelete("{id:length(24)}")]
+    public async Task<IActionResult> Delete(string id)
+    {
+        var medication = await _medicationService.GetAsync(id);
+
+        if (medication is null)
+        {
+            return NotFound();
+        }
+
+        await _medicationService.RemoveAsync(id);
+
+        return NoContent();
+    }
 }
