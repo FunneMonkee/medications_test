@@ -1,6 +1,11 @@
+using MedicineApi.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Configuration.AddEnvironmentVariables(); 
 // Add services to the container.
+builder.Services.Configure<Settings>(
+    builder.Configuration.GetSection("MedicationsDatabase"));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
