@@ -26,4 +26,7 @@ public class MedicationService
 
     public async Task CreateAsync(Medication newMedication) =>
         await _medicationCollection.InsertOneAsync(newMedication);
+
+    public async Task RemoveAsync(string id) =>
+        await _medicationCollection.DeleteOneAsync(x => x.Id == id);
 }
