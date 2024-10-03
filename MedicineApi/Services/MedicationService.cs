@@ -29,4 +29,7 @@ public class MedicationService
 
     public async Task RemoveAsync(string id) =>
         await _medicationCollection.DeleteOneAsync(x => x.Id == id);
+
+    public async Task<List<Medication>> GetAsync() =>
+        await _medicationCollection.Find(_ => true).ToListAsync();
 }
