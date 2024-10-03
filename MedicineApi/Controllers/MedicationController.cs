@@ -5,13 +5,17 @@ using Microsoft.AspNetCore.Mvc;
 namespace MedicineApi.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/medications")]
 public class MedicationController: ControllerBase
 {
     private readonly MedicationService _medicationService;
 
     public MedicationController(MedicationService medicationService) =>
         _medicationService = medicationService;
+
+    [HttpGet]
+    public async Task<List<Medication>> Get() =>
+        await _medicationService.GetAsync();
 
     [HttpGet("{id:length(24)}")]
     public async Task<ActionResult<Medication>> Get(string id)
