@@ -24,5 +24,10 @@ namespace MedicineApi.Models
         [JsonIgnore]
         [BsonDateTimeOptions(Kind = DateTimeKind.Local)]
         public DateTime CreationDate { get; set; }
+
+        public Medication()
+        {
+            CreationDate = DateTime.Now;
+        }
    }
 }
