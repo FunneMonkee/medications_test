@@ -35,7 +35,7 @@ public class MedicationControllerTest
     }
 
     [Fact]
-    public async Task whenPOSTIsReceived_andMedicationIsValid_thenReturnOkWithLocation()
+    public async Task WhenPOSTIsReceived_andMedicationIsValid_thenReturnOkWithLocation()
     {
         Medication newMedication = new Medication();
         newMedication.Name = "name";
